@@ -1,0 +1,30 @@
+[project]
+name = "sstmap"
+description = "SSTMap: A computational tool for studying structure and thermodynamics of water molecules on solute surfaces"
+authors = [{ name = "Kamran Haider", email = "kamranhaider.mb@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+dynamic = ["version"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+]
+dependencies = []
+
+[project.urls]
+"Homepage" = "https://github.com/KurtzmanLab/SSTMap"
+"Bug Tracker" = "https://github.com/KurtzmanLab/SSTMap/issues"
+
+[tool.setuptools.packages.find]
+where = [""]
+include = ["sstmap*"]
+namespaces = false
+
+[build-system]
+requires = ["setuptools", "numpy>=1.18.5", "toml"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+"run_hsa" = "sstmap.scripts.run_hsa:entry_point"
+"run_gist" = "sstmap.scripts.run_gist:entry_point"
