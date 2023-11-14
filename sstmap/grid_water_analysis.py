@@ -311,8 +311,10 @@ class GridWaterAnalysis(WaterAnalysis):
         trj.xyz *= 10.0
         coords = trj.xyz
         uc = trj.unitcell_vectors[0]*10.
-        waters = []
-        calc.assign_voxels(trj.xyz, self.dims, self.gridmax, self.origin, waters, self.wat_oxygen_atom_ids)
+
+        from sstmap import sstmap_ext_cython as calc2
+        waters = calc2.assign_voxels(trj.xyz, self.dims, self.gridmax, self.origin, self.wat_oxygen_atom_ids)        
+        waters = [np.array(wat, dtype=np.int32) for wat in waters]
 
         distance_matrix = np.zeros((self.water_sites, self.all_atom_ids.shape[0]))
 
@@ -334,7 +336,7 @@ class GridWaterAnalysis(WaterAnalysis):
                 ### and holds the shell_index of each neighbor candidate atom (0:first shell, 1: beyond first
                 ### shell)
                 valid_neighbors = np.ones(self.neighbor_ids.shape[0], dtype=bool)
-                valid_neighbors[np.where(self.neighbor_ids==wat)] = False
+                valid_neighbors[np.where(self.neighbor_ids==wat[1])] = False
                 neighbor_ids   = self.neighbor_ids[valid_neighbors]
                 wat_nbrs_shell = self.wat_nbrs_shell[valid_neighbors]
                 calc.get_pairwise_distances(wat, self.all_atom_ids, 
