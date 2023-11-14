@@ -186,7 +186,7 @@ class WaterAnalysis(object):
         """
 
         self.neighbor_ids   = self.topology.select(mask)
-        self.wat_nbrs_shell = np.zeros(self.neighbor_ids.shape[0], dtype=np.int)
+        self.wat_nbrs_shell = np.zeros(self.neighbor_ids.shape[0], dtype=np.int_)
 
 
     @function_timer
@@ -276,9 +276,9 @@ class WaterAnalysis(object):
             else:
                 self.don_H_pair_dict[pair[0]].append([pair[0], pair[1]])
 
-        solute_acc_ids = np.array(acc_list, dtype=np.int)
-        solute_acc_don_ids = np.array(acc_don_list, dtype=np.int)
-        solute_don_ids = np.array(don_list, dtype=np.int)
+        solute_acc_ids = np.array(acc_list, dtype=np.int_)
+        solute_acc_don_ids = np.array(acc_don_list, dtype=np.int_)
+        solute_don_ids = np.array(don_list, dtype=np.int_)
 
         for at_id in solute_acc_ids:
             self.prot_hb_types[at_id] = 1
