@@ -21,7 +21,7 @@ using namespace std;
     }
 #endif
 
-int prob(string infile, string outfile) {
+void prob(string infile, string outfile) {
     /*
     if (argc <= 1) {
         cerr << "\nUSAGE:\n\n"
@@ -402,9 +402,8 @@ int prob(string infile, string outfile) {
     fclose(pFile);
 }
 
-int renum(string infile) {
+void renum(string infile) {
 	//int i = 0; string infile;
-	int i = 0;
 	/*
 	while (i < argc) {
 		if (!strcmp(argv[i], "-i")) {
