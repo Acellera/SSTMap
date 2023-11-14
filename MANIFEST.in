@@ -1,1 +1,2 @@
 recursive-include sstmap *.h
+recursive-include sstmap *.pyx

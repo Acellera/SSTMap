@@ -16,7 +16,6 @@ extensions = [
         include_dirs=[numpy.get_include()],
         language="c++",
         extra_compile_args=["-O3"],
-        # extra_link_args=["-fopenmp"],
     )
     for ext in pyx_files
 ]
@@ -26,7 +25,6 @@ extensions.append(
         sources=["sstmap/_sstmap_ext.c"],
         include_dirs=[numpy.get_include()],
         extra_link_args=["-lgsl", "-lgslcblas"],
-        extra_compile_args=["-g"],
     )
 )
 extensions.append(
@@ -35,7 +33,6 @@ extensions.append(
         sources=["sstmap/_sstmap_entropy.cpp", "sstmap/kdhsa102.cpp"],
         include_dirs=["sstmap/"],
         language="c++",
-        extra_compile_args=["-g"],
     )
 )
 
@@ -44,7 +41,6 @@ extensions.append(
         "_sstmap_probableconfig",
         sources=["sstmap/_sstmap_probable.cpp", "sstmap/probable.cpp"],
         language="c++",
-        extra_compile_args=["-g"],
     )
 )
 
